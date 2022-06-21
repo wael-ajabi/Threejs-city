@@ -16,6 +16,8 @@ dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
 dracoLoader.setDecoderConfig({ type: 'js' })
 loader.setDRACOLoader(dracoLoader)
 
+setTimeout(()=>{    document.getElementById( 'loading-screen' ).style.display='none'
+},4000)
 /////////////////////////////////////////////////////////////////////////
 ///// DIV CONTAINER CREATION TO HOLD THREEJS EXPERIENCE
 const container = document.createElement('div')
@@ -289,7 +291,7 @@ loader.load('models/gltf/taxi.glb', function (gltf) {
     scene.add(gltf.scene)
 })
 
-loader.load('models/gltf/helis.glb', function (gltf) {
+loader.load('models/gltf/helis2.glb', function (gltf) {
     mixer1 = new THREE.AnimationMixer(gltf.scene);
     gltf.scene.position.y=1
     mixer2 = new THREE.AnimationMixer(gltf.scene);
