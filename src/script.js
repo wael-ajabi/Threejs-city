@@ -313,6 +313,9 @@ heli.visible=true
   document.getElementById('play').onclick=function(){
     controls.enableRotate = true
     controls.enableZoom = true
+    controls.maxPolarAngle=Math.PI/2
+    controls.maxDistance=60
+
     document.getElementById(0).style.display='none'
     document.getElementById(1).style.display='none'
     document.getElementById(2).style.display='none'
