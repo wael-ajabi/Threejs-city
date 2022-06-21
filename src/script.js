@@ -69,6 +69,23 @@ scene.add(sunLight)
 
 /////////////////////////////////////////////////////////////////////////
 ///// LOADING GLB/GLTF MODEL FROM BLENDER
+var heli=null
+loader.load('models/gltf/helis.glb', function (gltf) {
+    mixer1 = new THREE.AnimationMixer(gltf.scene);
+    gltf.scene.position.y=1
+    mixer2 = new THREE.AnimationMixer(gltf.scene);
+    mixer3 = new THREE.AnimationMixer(gltf.scene);
+    
+    action = mixer2.clipAction(gltf.animations[0]);
+    action2 = mixer3.clipAction(gltf.animations[1]);
+    action.play()
+    action2.play()
+    heli=gltf.scene
+    heli.visible=false
+    scene.add(gltf.scene)
+})
+
+
 loader.load('models/gltf/untitled.glb', function (gltf) {
     gltf.scene.position.y=1
 
@@ -290,21 +307,7 @@ loader.load('models/gltf/taxi.glb', function (gltf) {
 
     scene.add(gltf.scene)
 })
-
-loader.load('models/gltf/helis2.glb', function (gltf) {
-    mixer1 = new THREE.AnimationMixer(gltf.scene);
-    gltf.scene.position.y=1
-    mixer2 = new THREE.AnimationMixer(gltf.scene);
-    mixer3 = new THREE.AnimationMixer(gltf.scene);
-    
-    action = mixer2.clipAction(gltf.animations[0]);
-    action2 = mixer3.clipAction(gltf.animations[1]);
-    action.play()
-    action2.play()
-
-    scene.add(gltf.scene)
-})
-
+heli.visible=true
   })
   tweenCamera1.onUpdate(updateCamera)
   document.getElementById('play').onclick=function(){
